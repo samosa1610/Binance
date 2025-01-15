@@ -1,48 +1,68 @@
 #include <iostream>
+#include <string>
 #include <curl/curl.h>
+#include <json/json.h>  // Include jsoncpp header
 
-// Callback function to write the data received by libcurl
-size_t write_callback(void *contents, size_t size, size_t nmemb, std::string *output) {
+// Write callback function for handling response
+size_t WriteCallback(void *contents, size_t size, size_t nmemb, std::string *output) {
     size_t total_size = size * nmemb;
-    output->append(static_cast<char*>(contents), total_size); // Append the data to the string
-    return total_size; // Return the size of the data processed
+    output->append((char*)contents, total_size);
+    return total_size;
 }
 
-int main() {
+// Function to make GET request to Binance API
+void getBinanceAPIData(const std::string &endpoint) {
     CURL *curl;
     CURLcode res;
-    std::string read_buffer;
-
-    // Initialize libcurl
+    std::string response_string;
+    
+    // Base URL
+    std::string base_url = "https://testnet.binance.vision/api";
+    
+    // Construct full URL
+    std::string url = base_url + endpoint;
+    
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
-
+    
     if(curl) {
-        // Set the URL to send the GET request to
-        curl_easy_setopt(curl, CURLOPT_URL, "http://google.com");
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_string);
 
-        // Set the callback function to handle the response data
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &read_buffer);
-
-        // Perform the HTTP GET request
         res = curl_easy_perform(curl);
 
-        // Check if the request was successful
         if(res != CURLE_OK) {
-            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+            std::cerr << "CURL Error: " << curl_easy_strerror(res) << std::endl;
         } else {
-            // Print the response data
-            std::cout << "Response data: " << std::endl;
-            std::cout << read_buffer << std::endl;
+            // Parse JSON response using jsoncpp
+            Json::CharReaderBuilder reader;
+            Json::Value json_response;
+            std::string errs;
+
+            std::istringstream s(response_string);
+            if (Json::parseFromStream(reader, s, &json_response, &errs)) {
+                // Print pretty JSON output
+                std::cout << json_response.toStyledString() << std::endl;
+            } else {
+                std::cerr << "Error parsing JSON: " << errs << std::endl;
+            }
         }
 
-        // Cleanup
         curl_easy_cleanup(curl);
     }
 
-    // Cleanup global libcurl environment
     curl_global_cleanup();
+}
+
+int main() {
+    // Example endpoint to ping the Binance Spot Testnet API
+    std::string endpoint = "/v3/exchangeInfo";
+    getBinanceAPIData(endpoint);
+
+
+    // You can use other endpoints by changing the `endpoint` string
+    // Example: "/v3/account" to get account info (needs authentication)
 
     return 0;
 }

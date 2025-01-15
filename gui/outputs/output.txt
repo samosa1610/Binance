@@ -1,0 +1,7 @@
+Order Output:
+Response: {"symbol":"BTCUSDT","orderId":1955100,"orderListId":-1,"clientOrderId":"8aoODmMNMOGglXyDDKN7S9","transactTime":1736936174744,"price":"35000.00000000","origQty":"0.00100000","executedQty":"0.00000000","origQuoteOrderQty":"0.00000000","cummulativeQuoteQty":"0.00000000","status":"NEW","timeInForce":"GTC","type":"LIMIT","side":"BUY","workingTime":1736936174744,"fills":[],"selfTradePreventionMode":"EXPIRE_MAKER"}
+
+Error Output:
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   587  100   411  100   176    600    257 --:--:-- --:--:-- --:--:--   856
