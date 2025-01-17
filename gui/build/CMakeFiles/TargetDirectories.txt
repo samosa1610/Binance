@@ -1,5 +1,3 @@
-/home/samosa/project/gui/build/CMakeFiles/QtGuiApp.dir
+/home/samosa/project/gui/build/CMakeFiles/place.dir
 /home/samosa/project/gui/build/CMakeFiles/edit_cache.dir
 /home/samosa/project/gui/build/CMakeFiles/rebuild_cache.dir
-/home/samosa/project/gui/build/CMakeFiles/QtGuiApp_autogen_timestamp_deps.dir
-/home/samosa/project/gui/build/CMakeFiles/QtGuiApp_autogen.dir

@@ -1,31 +1,34 @@
 #!/bin/bash
 
-# Your Binance API key and secret key
 API_KEY="rtkDibROAhuUQM3vVKvVa36QzdROahMi2ycOSCLYpjbutb7jCqf8t18VhNvlV0yX"
 SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFofJIkkWNpL"
 
-# Fetch the server time
+# The server time
 SERVER_TIME=$(curl -s "https://testnet.binance.vision/api/v3/time" | jq -r '.serverTime')
 
-# Prepare the order parameters
-SYMBOL="BTCUSDT"
-SIDE="BUY"
-TYPE="LIMIT"
-TIME_IN_FORCE="GTC"
-QUANTITY="0.001"
-PRICE="35000"
+# Parameters for the market order
+SYMBOL="$1"
+SIDE="$2"
+QUANTITY="$3"
 TIMESTAMP=$SERVER_TIME
 
-# Concatenate the parameters for the signature
-QUERY_STRING="symbol=$SYMBOL&side=$SIDE&type=$TYPE&timeInForce=$TIME_IN_FORCE&quantity=$QUANTITY&price=$PRICE&timestamp=$TIMESTAMP"
+# SYMBOL="BTCUSDT"
+# SIDE = "BUY"
+# QUANTITY="0.001"
+# TIMESTAMP=$SERVER_TIME
 
-# Generate the signature using HMAC SHA256
+# Prepare query string
+QUERY_STRING="symbol=$SYMBOL&side=$SIDE&type=MARKET&quantity=$QUANTITY&timestamp=$TIMESTAMP"
+
+# Generate the signature
 SIGNATURE=$(echo -n "$QUERY_STRING" | openssl dgst -sha256 -hmac "$SECRET_KEY" | sed 's/^.* //')
 
-# Make the API request to place the order
+# Send the request to place the market order
 RESPONSE=$(curl -X POST "https://testnet.binance.vision/api/v3/order" \
 -H "X-MBX-APIKEY: $API_KEY" \
 -d "$QUERY_STRING&signature=$SIGNATURE")
 
-# Output the response
+# Output the response from Binance
 echo "Response: $RESPONSE"
+
+

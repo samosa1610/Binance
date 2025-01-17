@@ -117,115 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named QtGuiApp
+# Target rules for targets named place
 
 # Build rule for target.
-QtGuiApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QtGuiApp
-.PHONY : QtGuiApp
+place: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 place
+.PHONY : place
 
 # fast build rule for target.
-QtGuiApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/build
-.PHONY : QtGuiApp/fast
+place/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/build
+.PHONY : place/fast
 
-#=============================================================================
-# Target rules for targets named QtGuiApp_autogen_timestamp_deps
-
-# Build rule for target.
-QtGuiApp_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QtGuiApp_autogen_timestamp_deps
-.PHONY : QtGuiApp_autogen_timestamp_deps
-
-# fast build rule for target.
-QtGuiApp_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp_autogen_timestamp_deps.dir/build.make CMakeFiles/QtGuiApp_autogen_timestamp_deps.dir/build
-.PHONY : QtGuiApp_autogen_timestamp_deps/fast
-
-#=============================================================================
-# Target rules for targets named QtGuiApp_autogen
-
-# Build rule for target.
-QtGuiApp_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QtGuiApp_autogen
-.PHONY : QtGuiApp_autogen
-
-# fast build rule for target.
-QtGuiApp_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp_autogen.dir/build.make CMakeFiles/QtGuiApp_autogen.dir/build
-.PHONY : QtGuiApp_autogen/fast
-
-QtGuiApp_autogen/mocs_compilation.o: QtGuiApp_autogen/mocs_compilation.cpp.o
-.PHONY : QtGuiApp_autogen/mocs_compilation.o
+place_orders/place.o: place_orders/place.cpp.o
+.PHONY : place_orders/place.o
 
 # target to build an object file
-QtGuiApp_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/QtGuiApp_autogen/mocs_compilation.cpp.o
-.PHONY : QtGuiApp_autogen/mocs_compilation.cpp.o
+place_orders/place.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/place_orders/place.cpp.o
+.PHONY : place_orders/place.cpp.o
 
-QtGuiApp_autogen/mocs_compilation.i: QtGuiApp_autogen/mocs_compilation.cpp.i
-.PHONY : QtGuiApp_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-QtGuiApp_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/QtGuiApp_autogen/mocs_compilation.cpp.i
-.PHONY : QtGuiApp_autogen/mocs_compilation.cpp.i
-
-QtGuiApp_autogen/mocs_compilation.s: QtGuiApp_autogen/mocs_compilation.cpp.s
-.PHONY : QtGuiApp_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-QtGuiApp_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/QtGuiApp_autogen/mocs_compilation.cpp.s
-.PHONY : QtGuiApp_autogen/mocs_compilation.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
+place_orders/place.i: place_orders/place.cpp.i
+.PHONY : place_orders/place.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/main.cpp.i
-.PHONY : main.cpp.i
+place_orders/place.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/place_orders/place.cpp.i
+.PHONY : place_orders/place.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-mainwindow.o: mainwindow.cpp.o
-.PHONY : mainwindow.o
-
-# target to build an object file
-mainwindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/mainwindow.cpp.o
-.PHONY : mainwindow.cpp.o
-
-mainwindow.i: mainwindow.cpp.i
-.PHONY : mainwindow.i
-
-# target to preprocess a source file
-mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/mainwindow.cpp.i
-.PHONY : mainwindow.cpp.i
-
-mainwindow.s: mainwindow.cpp.s
-.PHONY : mainwindow.s
+place_orders/place.s: place_orders/place.cpp.s
+.PHONY : place_orders/place.s
 
 # target to generate assembly for a file
-mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/QtGuiApp.dir/build.make CMakeFiles/QtGuiApp.dir/mainwindow.cpp.s
-.PHONY : mainwindow.cpp.s
+place_orders/place.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/place_orders/place.cpp.s
+.PHONY : place_orders/place.cpp.s
 
 # Help Target
 help:
@@ -235,18 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... QtGuiApp_autogen"
-	@echo "... QtGuiApp_autogen_timestamp_deps"
-	@echo "... QtGuiApp"
-	@echo "... QtGuiApp_autogen/mocs_compilation.o"
-	@echo "... QtGuiApp_autogen/mocs_compilation.i"
-	@echo "... QtGuiApp_autogen/mocs_compilation.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... mainwindow.o"
-	@echo "... mainwindow.i"
-	@echo "... mainwindow.s"
+	@echo "... place"
+	@echo "... place_orders/place.o"
+	@echo "... place_orders/place.i"
+	@echo "... place_orders/place.s"
 .PHONY : help
 
 
