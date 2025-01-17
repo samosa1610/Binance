@@ -31,4 +31,24 @@ RESPONSE=$(curl -X POST "https://testnet.binance.vision/api/v3/order" \
 # Output the response from Binance
 echo "Response: $RESPONSE"
 
+LOG_FILE="./outputs/market_responses.json"
+
+# Check if the log file exists
+if [ ! -f "$LOG_FILE" ]; then
+    # If the file doesn't exist, create it and start with a JSON array
+    echo "[" > "$LOG_FILE"
+else
+    # If the file exists, remove the last closing bracket (so we can append new response)
+    sed -i '$ s/.$//' "$LOG_FILE"
+    echo "," >> "$LOG_FILE"  # Add a comma to separate responses
+fi
+
+# Append the response to the JSON file
+echo "$RESPONSE" >> "$LOG_FILE"
+
+# Add a closing bracket to end the JSON array
+echo "]" >> "$LOG_FILE"
+
+echo "Response stored in $LOG_FILE"
+
 

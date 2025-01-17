@@ -129,6 +129,43 @@ place/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/build
 .PHONY : place/fast
 
+#=============================================================================
+# Target rules for targets named cancel
+
+# Build rule for target.
+cancel: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cancel
+.PHONY : cancel
+
+# fast build rule for target.
+cancel/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/build
+.PHONY : cancel/fast
+
+place_orders/cancel.o: place_orders/cancel.cpp.o
+.PHONY : place_orders/cancel.o
+
+# target to build an object file
+place_orders/cancel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/place_orders/cancel.cpp.o
+.PHONY : place_orders/cancel.cpp.o
+
+place_orders/cancel.i: place_orders/cancel.cpp.i
+.PHONY : place_orders/cancel.i
+
+# target to preprocess a source file
+place_orders/cancel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/place_orders/cancel.cpp.i
+.PHONY : place_orders/cancel.cpp.i
+
+place_orders/cancel.s: place_orders/cancel.cpp.s
+.PHONY : place_orders/cancel.s
+
+# target to generate assembly for a file
+place_orders/cancel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/place_orders/cancel.cpp.s
+.PHONY : place_orders/cancel.cpp.s
+
 place_orders/place.o: place_orders/place.cpp.o
 .PHONY : place_orders/place.o
 
@@ -161,7 +198,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cancel"
 	@echo "... place"
+	@echo "... place_orders/cancel.o"
+	@echo "... place_orders/cancel.i"
+	@echo "... place_orders/cancel.s"
 	@echo "... place_orders/place.o"
 	@echo "... place_orders/place.i"
 	@echo "... place_orders/place.s"

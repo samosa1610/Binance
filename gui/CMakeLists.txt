@@ -7,3 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 add_executable(place ./place_orders/place.cpp)
+add_executable(cancel ./place_orders/cancel.cpp)

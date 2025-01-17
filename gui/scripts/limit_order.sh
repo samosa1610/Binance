@@ -7,7 +7,7 @@ SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFofJIkkWNpL"
 # getthe server time
 SERVER_TIME=$(curl -s "https://testnet.binance.vision/api/v3/time" | jq -r '.serverTime')
 
-# Prepare the order parameters
+#  order parameters
 echo "Side received: $2"
 SYMBOL="$1"
 SIDE="BUY"
@@ -39,4 +39,22 @@ RESPONSE=$(curl -X POST "https://testnet.binance.vision/api/v3/order" \
 
 # Output the response
 echo "Response: $RESPONSE"
+
+
+LOG_FILE="./outputs/limit_responses.json"
+
+if [ ! -f "$LOG_FILE" ]; then
+    # creating log file if not found
+    echo "[" > "$LOG_FILE"
+else
+    # appending log file if exists
+    sed -i '$ s/.$//' "$LOG_FILE"
+    echo "," >> "$LOG_FILE"  
+fi
+
+# appending the log file
+echo "$RESPONSE" >> "$LOG_FILE"
+echo "]" >> "$LOG_FILE"
+
+echo "Response stored in $LOG_FILE"
 

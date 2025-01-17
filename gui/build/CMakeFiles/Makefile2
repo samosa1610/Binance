@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/samosa/project/gui/build
 
 # The main recursive "all" target.
 all: CMakeFiles/place.dir/all
+all: CMakeFiles/cancel.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/place.dir/clean
+clean: CMakeFiles/cancel.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,7 +83,7 @@ clean: CMakeFiles/place.dir/clean
 CMakeFiles/place.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samosa/project/gui/build/CMakeFiles --progress-num=1,2 "Built target place"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samosa/project/gui/build/CMakeFiles --progress-num=3,4 "Built target place"
 .PHONY : CMakeFiles/place.dir/all
 
 # Build rule for subdir invocation for target.
@@ -99,6 +101,32 @@ place: CMakeFiles/place.dir/rule
 CMakeFiles/place.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/place.dir/build.make CMakeFiles/place.dir/clean
 .PHONY : CMakeFiles/place.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/cancel.dir
+
+# All Build rule for target.
+CMakeFiles/cancel.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/samosa/project/gui/build/CMakeFiles --progress-num=1,2 "Built target cancel"
+.PHONY : CMakeFiles/cancel.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cancel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samosa/project/gui/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cancel.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/samosa/project/gui/build/CMakeFiles 0
+.PHONY : CMakeFiles/cancel.dir/rule
+
+# Convenience name for target.
+cancel: CMakeFiles/cancel.dir/rule
+.PHONY : cancel
+
+# clean rule for target.
+CMakeFiles/cancel.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cancel.dir/build.make CMakeFiles/cancel.dir/clean
+.PHONY : CMakeFiles/cancel.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

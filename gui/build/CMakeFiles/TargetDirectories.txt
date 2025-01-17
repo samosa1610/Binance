@@ -1,3 +1,4 @@
 /home/samosa/project/gui/build/CMakeFiles/place.dir
+/home/samosa/project/gui/build/CMakeFiles/cancel.dir
 /home/samosa/project/gui/build/CMakeFiles/edit_cache.dir
 /home/samosa/project/gui/build/CMakeFiles/rebuild_cache.dir
