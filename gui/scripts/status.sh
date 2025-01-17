@@ -32,3 +32,5 @@ RESPONSE=$(curl -s -H "X-MBX-APIKEY: $API_KEY" \
 
 # Echo status from response
 echo $RESPONSE | jq -r ".status"
+echo "$RESPONSE" | jq -r ".side"
+echo "$RESPONSE" | jq -r ".type"

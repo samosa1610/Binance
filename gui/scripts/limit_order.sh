@@ -8,9 +8,8 @@ SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFofJIkkWNpL"
 SERVER_TIME=$(curl -s "https://testnet.binance.vision/api/v3/time" | jq -r '.serverTime')
 
 #  order parameters
-echo "Side received: $2"
 SYMBOL="$1"
-SIDE="BUY"
+SIDE="$2"
 TYPE="$3"
 TIME_IN_FORCE="GTC"
 QUANTITY="$4"
