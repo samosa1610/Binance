@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Your Binance API key and secret key
+#Binance API key and secret key
 API_KEY="rtkDibROAhuUQM3vVKvVa36QzdROahMi2ycOSCLYpjbutb7jCqf8t18VhNvlV0yX"
 SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFofJIkkWNpL"
 
@@ -33,8 +33,8 @@ SIGNATURE=$(echo -n "$QUERY_STRING" | openssl dgst -sha256 -hmac "$SECRET_KEY" |
 
 #  API request to place the order
 RESPONSE=$(curl -X POST "https://testnet.binance.vision/api/v3/order" \
--H "X-MBX-APIKEY: $API_KEY" \
--d "$QUERY_STRING&signature=$SIGNATURE")
+    -H "X-MBX-APIKEY: $API_KEY" \
+    -d "$QUERY_STRING&signature=$SIGNATURE")
 
 # Output the response
 echo "Response: $RESPONSE"
@@ -56,4 +56,15 @@ echo "$RESPONSE" >> "$LOG_FILE"
 echo "]" >> "$LOG_FILE"
 
 echo "Response stored in $LOG_FILE"
+
+#checking status
+ORDER_STATUS=$(echo "$RESPONSE" | jq -r '.status')
+
+if [ "$ORDER_STATUS" == "NEW" ] || [ "$ORDER_STATUS" == "FILLED" ]; then
+    python3 "./dialog boxes/order_placed.py"
+else
+    ERROR=$(echo "$RESPONSE" | jq -r '.msg')
+    python3 "./dialog boxes/failed_order.py" "$ERROR"
+fi
+
 

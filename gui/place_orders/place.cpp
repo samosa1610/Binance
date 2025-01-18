@@ -7,7 +7,10 @@ int main(int argc, char *argv[]) {
     if(std::string(argv[3]) == "LIMIT"){
         for(int i = 0 ; i < 6  ; i ++){
             if (std::string(argv[i]).empty() ) {
+                // std::string error = "Use all parameters correctly";
                 std::cerr << "Error : Use all parameters correctly\n";
+                // std::string command = "python3 \"./dialog boxes/failed_order.py\"" + error;
+                // system(command.c_str());
                 return 1;
             }   
         }
@@ -39,7 +42,7 @@ std::string SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFof
     if(std::string(argv[3]) == "LIMIT" ){
         std::string command = "./scripts/limit_order.sh " + symbol + " " + side + " " + order_type + " "  + quantity + " " + price ;
 
-        // Execute the command
+        //get result
         int result = system(command.c_str());
 
         if (result != 0) {

@@ -3,5 +3,5 @@ from tkinter import messagebox
 
 main = tk.Tk()
 main.withdraw()
-messagebox.showinfo("Order Confirmation", "✅ Your order has been placed successfully!")
+messagebox.showinfo("Order Confirmation", "Your order has been placed successfully!")
 main.destroy()
