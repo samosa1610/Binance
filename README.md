@@ -20,3 +20,20 @@ Run the following two commands in the terminal to make the `install.sh` script e
 ```bash
 chmod +x install.sh
 ./install.sh
+```
+#### **Step 3:**
+Enter your password for the installing process.
+This marks the completion of installation.
+
+
+### **2.Running the Application**
+
+Run the following command in the terminal to run the `run.sh` script executable
+
+```bash
+./run.sh
+```
+
+
+
+
