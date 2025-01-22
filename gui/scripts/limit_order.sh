@@ -1,13 +1,10 @@
 #!/bin/bash
-
-#Binance API key and secret key
+#----------------------------------------------------------------------------------------------------------------------------------
 API_KEY="rtkDibROAhuUQM3vVKvVa36QzdROahMi2ycOSCLYpjbutb7jCqf8t18VhNvlV0yX"
 SECRET_KEY="5Xv5xYSTRa08E9xK2A6ZaKXwtYQZq2qV19Hr8rrTsM0lpVXc52VBKFofJIkkWNpL"
-
-# getthe server time
 SERVER_TIME=$(curl -s "https://testnet.binance.vision/api/v3/time" | jq -r '.serverTime')
+#----------------------------------------------------------------------------------------------------------------------------------
 
-#  order parameters
 SYMBOL="$1"
 SIDE="$2"
 TYPE="$3"
@@ -17,29 +14,21 @@ PRICE="$5"
 TIMESTAMP=$SERVER_TIME
 
 
-# SYMBOL="BTCUSDT"
-# SIDE="BUY"
-# TYPE="LIMIT"
-# TIME_IN_FORCE="GTC"
-# QUANTITY="0.001"
-# PRICE="35000"
-# TIMESTAMP=$SERVER_TIME
-
-# query for signature
+# query string
 QUERY_STRING="symbol=$SYMBOL&side=$SIDE&type=$TYPE&timeInForce=$TIME_IN_FORCE&quantity=$QUANTITY&price=$PRICE&timestamp=$TIMESTAMP"
 
-# getting signature using HMAC SHA256
+# HMAC SHA256 signature 
 SIGNATURE=$(echo -n "$QUERY_STRING" | openssl dgst -sha256 -hmac "$SECRET_KEY" | sed 's/^.* //')
 
-#  API request to place the order
+#  API request 
 RESPONSE=$(curl -X POST "https://testnet.binance.vision/api/v3/order" \
     -H "X-MBX-APIKEY: $API_KEY" \
     -d "$QUERY_STRING&signature=$SIGNATURE")
 
-# Output the response
+# response
 echo "Response: $RESPONSE"
 
-
+#storing the response
 LOG_FILE="./outputs/limit_responses.json"
 
 if [ ! -f "$LOG_FILE" ]; then
@@ -51,17 +40,18 @@ else
     echo "," >> "$LOG_FILE"  
 fi
 
-# appending the log file
 echo "$RESPONSE" >> "$LOG_FILE"
 echo "]" >> "$LOG_FILE"
-
 echo "Response stored in $LOG_FILE"
 
-#checking status
+
+
+# error handling
 ORDER_STATUS=$(echo "$RESPONSE" | jq -r '.status')
 
 if [ "$ORDER_STATUS" == "NEW" ] || [ "$ORDER_STATUS" == "FILLED" ]; then
-    python3 "./dialog boxes/order_placed.py"
+    ORDER_ID=$(echo "$RESPONSE" | jq -r ".orderId")
+    python3 "./dialog boxes/order_placed.py" "$SYMBOL" "$SIDE" "$TYPE" "$ORDER_ID" "$PRICE"
 else
     ERROR=$(echo "$RESPONSE" | jq -r '.msg')
     python3 "./dialog boxes/failed_order.py" "$ERROR"

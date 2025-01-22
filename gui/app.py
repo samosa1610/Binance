@@ -4,7 +4,7 @@ import subprocess  #for running cpp with this
 #----------------------------------------------------------main window --------------------------------------------------------------------------
 main = tk.Tk()  
 main.title("BinanceAPI Client")
-main.geometry("300x200")  #size of main fwindow
+main.geometry("300x200")  
 main.configure(bg="#079992")
 #-------------------------------------------------------------------------------------------------------------------------------------
 
@@ -130,5 +130,5 @@ orderID_cancel_entry = tk.Entry(cancel_frame )
 orderID_cancel_entry.grid(row = 1 , column = 3 , padx = 5 , pady = 5)
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------
-# runs the eventlooop
+# event loop
 main.mainloop()
