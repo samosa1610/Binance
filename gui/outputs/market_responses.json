@@ -1,0 +1,6 @@
+[
+{"symbol":"BTCUSDT","orderId":3486761,"orderListId":-1,"clientOrderId":"3kJGr8HWgKcSxeKVdYBeAx","transactTime":1737543014553,"price":"0.00000000","origQty":"0.00100000","executedQty":"0.00100000","origQuoteOrderQty":"0.00000000","cummulativeQuoteQty":"104.93244000","status":"FILLED","timeInForce":"GTC","type":"MARKET","side":"BUY","workingTime":1737543014553,"fills":[{"price":"104932.44000000","qty":"0.00100000","commission":"0.00000000","commissionAsset":"BTC","tradeId":1229867}],"selfTradePreventionMode":"EXPIRE_MAKER"}
+
+,
+{"symbol":"BTCUSDT","orderId":3488994,"orderListId":-1,"clientOrderId":"4P1d8ERdSxgFgsXTaSGXua","transactTime":1737543316531,"price":"0.00000000","origQty":"0.00100000","executedQty":"0.00100000","origQuoteOrderQty":"0.00000000","cummulativeQuoteQty":"105.06600000","status":"FILLED","timeInForce":"GTC","type":"MARKET","side":"BUY","workingTime":1737543316531,"fills":[{"price":"105066.00000000","qty":"0.00100000","commission":"0.00000000","commissionAsset":"BTC","tradeId":1230498}],"selfTradePreventionMode":"EXPIRE_MAKER"}
+]
